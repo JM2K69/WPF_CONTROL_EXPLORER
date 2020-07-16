@@ -1,9 +1,9 @@
 ﻿##########################################################################
 ## WPF CONTROL EXPLORER                                                 ##
 ## v1.2                                                                 ##
-## Author: Trevor Jones / JM2K69                                        ##
+## Author:Trevor Jones /  JM2K69                                        ##
 ## Released: 26-Sep-2016                                                ##
-## Update: 01-Juil-2020                                                 ##
+## Update: 16-Juil-2020                                                 ##
 ## More Info: http://smsagent.wordpress.com/tools/wpf-control-explorer/ ##
 ##########################################################################
 
@@ -31,6 +31,7 @@ foreach ($item in $(gci -Filter *.dll).name) {
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mbar="clr-namespace:AlertBarWpf;assembly=AlertBarWpf"
+        WindowStartupLocation="CenterScreen"
         Title="WPF Control Explorer 1.2" Height="660" Width="950">
         
     <Window.Resources>
@@ -257,6 +258,8 @@ $Hash.CB_Control.Add_SelectionChanged({
     # Populate the .Net class textblock
     $DotNetClass = $ControlTypes | Where {$_.Name -eq $This.SelectedItem} | Select -ExpandProperty FullName
     $Hash.TB_Class.Text = $DotNetClass
+    $hash.CB_Member.SelectedIndex = 0
+
     
 })
 
@@ -522,7 +525,10 @@ if ($hash.Type.IsOn -eq $True){
             $Hash.CB_Control.ItemsSource =[array]$SControls.Name
             $Hash.msgbar.Clear();	
             $Hash.msgbar.IconVisibility=$true
-            $Hash.msgbar.SetSuccessAlert("The Assembly $File is succeffully load ", 3);		
+            $Hash.msgbar.SetSuccessAlert("The Assembly $File is succeffully load ", 3);	
+            $hash.CB_Control.SelectedIndex = 0
+            $hash.CB_Member.SelectedIndex = 0
+	
         
 		}	
 
@@ -532,6 +538,9 @@ else{
           $Hash.CB_Control.ItemsSource = [array]$Controls 
           $Hash.ST_File.Visibility = "Hidden"
           $Hash.ST_FileV.Visibility = "Hidden"
+          $hash.CB_Control.SelectedIndex = 0
+          $hash.CB_Member.SelectedIndex = 0
+
     
 }
 
@@ -565,8 +574,10 @@ $Hash.Theme.Add_Click({
     [ControlzEx.Theming.ThemeManager]::Current.ChangeThemeColorScheme($Hash.Window ,$Value)
 
 })
+$hash.CB_Control.SelectedIndex = 0
+$hash.CB_Member.SelectedIndex = 0
 
- 
+
 
 #region Display the UI
 # Display Window
