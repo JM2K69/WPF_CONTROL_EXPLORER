@@ -1,18 +1,10 @@
 ﻿##########################################################################
 ## WPF CONTROL EXPLORER                                                 ##
-## v1.2                                                                 ##
-## Author:Trevor Jones /  JM2K69                                        ##
-## Released: 26-Sep-2016                                                ##
-## Update: 16-Juil-2020                                                 ##
-## More Info: http://smsagent.wordpress.com/tools/wpf-control-explorer/ ##
+## v1.0                                                                 ##
+## Author: JM2K69                                                       ##
+## Released: 16-Juil-2020                                               ##
 ##########################################################################
 
-<#
-.Synopsis
-   Exposes the properties, methods and events of the built-in WPF controls commonly used in WPF Windows desktop applications
-.Notes
-   Do not run from an existing PowerShell console session as the script will close it.  Right-click the script and run with PowerShell.
-#>
 
 #region UserInterface
 # Load Assemblies
@@ -32,7 +24,7 @@ foreach ($item in $(gci -Filter *.dll).name) {
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mbar="clr-namespace:AlertBarWpf;assembly=AlertBarWpf"
         WindowStartupLocation="CenterScreen"
-        Title="WPF Control Explorer 1.2" Height="660" Width="950">
+        Title="WPF Control Explorer 1.0" Height="660" Width="950">
         
     <Window.Resources>
         <ResourceDictionary>
